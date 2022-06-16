@@ -19,7 +19,7 @@ library(here)
 read_csv(here("data", "winequality-red.csv")) -> Winequality
 ```
 
-#Data
+**Data**
 
 The dataset is related to red and white variants of the Portuguese wine [Cortez et al., 2009]. The research question could be how does the physicochemical tests (our variables) contributes to wine quality score.
 
@@ -44,7 +44,7 @@ The table below list the available variables with a brief description.
 knitr::kable(Winequality, "pipe")
 ```
 
-#EDA
+**EDA**
 
 Firstly, here we can see a histogram for the over all quality score.
 as we can see from the graph, the most frequent wines quality score is 5 which is around the mean=5.636. In addition, both high and low quality wines seems rare in our data.
@@ -68,6 +68,6 @@ ggplot(Winequality, aes(sulphates, quality)) +
 similarly here, when the amount of sulphates was >1.25, most of the quality score was below 6 and only 1 exceeded 7.
 
 
-#Conclusion
+**Conclusion**
 
 In conclusion, we could say that according to this explanatory data analysis, an interesting distribution pattern between quality and some variables was found (chlorides and sulphates). However, we can’t conclude that higher amounts of these variables will lower quality and that is because the number of observations were very low. In addition to that, we need to perfume more statistical analysis to quantify if the difference in quality is significant. Nonetheless, these results provide an insight about the potential upper limits of these variable in order to not lower the wine quality.
