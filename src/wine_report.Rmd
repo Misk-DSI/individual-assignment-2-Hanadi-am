@@ -45,6 +45,7 @@ knitr::kable(Winequality, "pipe")
 ```
 
 #EDA
+
 Firstly, here we can see a histogram for the over all quality score.
 as we can see from the graph, the most frequent wines quality score is 5 which is around the mean=5.636. In addition, both high and low quality wines seems rare in our data.
 
@@ -68,4 +69,5 @@ similarly here, when the amount of sulphates was >1.25, most of the quality scor
 
 
 #Conclusion
+
 In conclusion, we could say that according to this explanatory data analysis, an interesting distribution pattern between quality and some variables was found (chlorides and sulphates). However, we can’t conclude that higher amounts of these variables will lower quality and that is because the number of observations were very low. In addition to that, we need to perfume more statistical analysis to quantify if the difference in quality is significant. Nonetheless, these results provide an insight about the potential upper limits of these variable in order to not lower the wine quality.
