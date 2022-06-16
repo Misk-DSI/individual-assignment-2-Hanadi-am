@@ -1,0 +1,71 @@
+---
+knit: (function(input, ...) {
+    rmarkdown::render(
+      input,
+      output_dir = "../"
+    )
+  })
+title: "wine_report"
+author: "Hanadi Bin Mujlli"
+date: '2022-06-15'
+output: html_document
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+library(here)
+read_csv(here("data", "winequality-red.csv")) -> Winequality
+```
+
+#Data
+
+The dataset is related to red and white variants of the Portuguese wine [Cortez et al., 2009]. The research question could be how does the physicochemical tests (our variables) contributes to wine quality score.
+
+The table below list the available variables with a brief description.
+
+| Variable           | Description                                            |
+| ------------------ | ------------------------------------------------------ |
+|Fixed acidity       | most acids involved with wine or fixed or nonvolatile  |
+|Volatile acidity    | the amount of acetic acid in wine                      |
+|Citric acid         | citric acid can add 'freshness' and flavor to wines    |
+|Residual sugar      | the amount of sugar remaining after fermentation stops |
+|Chlorides           | the amount of salt in the wine                         |
+|Free sulfur dioxide | the free form of SO2                                   |
+|Total sulfur dioxide| amount of free and bound forms of S02                  |
+|Density             | depending on the percent alcohol and sugar content     |
+|pH                  | describes how acidic or basic a wine is                |
+|Sulphate            | additive contributes to S02 & acts as an antimicrobial |
+|Alcohol             | percentage of alcohol by volume                        |
+|Quality             | a score between 0 and 10                               |
+
+```{r echo=FALSE}
+knitr::kable(Winequality, "pipe")
+```
+
+#EDA
+Firstly, here we can see a histogram for the over all quality score.
+as we can see from the graph, the most frequent wines quality score is 5 which is around the mean=5.636. In addition, both high and low quality wines seems rare in our data.
+
+```{r echo=FALSE}
+hist(Winequality$quality)
+```
+
+Secondly, these plot graphs shows how some variables as an independent and quality as dependent are distributed. 
+
+```{r echo=FALSE}
+ggplot(Winequality, aes(chlorides, quality)) +
+  geom_jitter(width = 0.2, shape = 16, alpha = 0.75)
+```
+As shown, when the amount of chlorides was >0.3, most of the quality score was around 6 and only 1 exceeded 7.
+
+```{r echo=FALSE}
+ggplot(Winequality, aes(sulphates, quality)) +
+  geom_jitter(width = 0.2, shape = 16, alpha = 0.75)
+```
+similarly here, when the amount of sulphates was >1.25, most of the quality score was below 6 and only 1 exceeded 7.
+
+
+#Conclusion
+In conclusion, we could say that according to this explanatory data analysis, an interesting distribution pattern between quality and some variables was found (chlorides and sulphates). However, we can’t conclude that higher amounts of these variables will lower quality and that is because the number of observations were very low. In addition to that, we need to perfume more statistical analysis to quantify if the difference in quality is significant. Nonetheless, these results provide an insight about the potential upper limits of these variable in order to not lower the wine quality.
